@@ -867,3 +867,231 @@ a {
     font-size: 12px;
   }
 }
+/* =========================
+   개인정보처리방침 팝업
+========================= */
+
+.footer-policy-button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.footer-policy-button:hover {
+  color: #9ed33b;
+}
+
+.policy-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.policy-modal.open {
+  display: flex;
+}
+
+.policy-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(4px);
+}
+
+.policy-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1000px, 100%);
+  max-height: calc(100vh - 60px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.4);
+}
+
+.policy-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 82px;
+  padding: 20px 30px;
+  background: linear-gradient(135deg, #679436, #9fbd28);
+  color: #ffffff;
+}
+
+.policy-modal-header h2 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -0.03em;
+}
+
+.policy-modal-close {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.policy-modal-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.policy-modal-content {
+  max-height: calc(100vh - 142px);
+  overflow-y: auto;
+  padding: 34px 38px 50px;
+  color: #444b52;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.policy-modal-content section {
+  margin-top: 38px;
+}
+
+.policy-modal-content h3 {
+  margin: 0 0 14px;
+  color: #202832;
+  font-size: 21px;
+  letter-spacing: -0.025em;
+}
+
+.policy-modal-content h4 {
+  margin: 18px 0 6px;
+  color: #303942;
+  font-size: 17px;
+}
+
+.policy-modal-content p {
+  margin: 10px 0;
+}
+
+.policy-modal-content ul {
+  margin: 10px 0;
+  padding-left: 22px;
+}
+
+.policy-modal-content li {
+  margin: 5px 0;
+}
+
+.policy-modal-content a {
+  color: #477d25;
+  font-weight: 700;
+}
+
+.policy-effective-date {
+  margin-top: 24px !important;
+  padding: 15px 18px;
+  border-left: 4px solid #8eb635;
+  background: #f4f8ec;
+  color: #34452b;
+  font-weight: 700;
+}
+
+.policy-contact-box {
+  margin-top: 18px;
+  padding: 20px 22px;
+  border: 1px solid #dce5d2;
+  border-radius: 12px;
+  background: #f8faf5;
+}
+
+.policy-contact-box p {
+  margin: 5px 0;
+}
+
+.policy-contact-box strong {
+  display: inline-block;
+  width: 80px;
+  color: #273120;
+}
+
+body.policy-modal-open {
+  overflow: hidden;
+}
+
+/* 개인정보처리방침 스크롤바 */
+
+.policy-modal-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.policy-modal-content::-webkit-scrollbar-track {
+  background: #eef1eb;
+}
+
+.policy-modal-content::-webkit-scrollbar-thumb {
+  border: 2px solid #eef1eb;
+  border-radius: 999px;
+  background: #8d9685;
+}
+
+/* 모바일 */
+
+@media (max-width: 640px) {
+  .footer-policy-button {
+    font-size: 15px;
+  }
+
+  .policy-modal {
+    padding: 12px;
+  }
+
+  .policy-modal-dialog {
+    max-height: calc(100vh - 24px);
+    border-radius: 13px;
+  }
+
+  .policy-modal-header {
+    min-height: 68px;
+    padding: 14px 18px;
+  }
+
+  .policy-modal-header h2 {
+    font-size: 21px;
+  }
+
+  .policy-modal-close {
+    width: 42px;
+    height: 42px;
+    font-size: 32px;
+  }
+
+  .policy-modal-content {
+    max-height: calc(100vh - 92px);
+    padding: 24px 20px 38px;
+    font-size: 14px;
+  }
+
+  .policy-modal-content section {
+    margin-top: 30px;
+  }
+
+  .policy-modal-content h3 {
+    font-size: 18px;
+  }
+
+  .policy-contact-box strong {
+    display: block;
+    width: auto;
+  }
+}

@@ -46,7 +46,7 @@ a {
 }
 
 .nav-wrap {
-  height: 88px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,7 +59,7 @@ a {
 }
 
 .logo-img {
-  height: 300px;
+  height: 360px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -608,6 +608,7 @@ footer {
   }
 
   .logo-img {
+    width: 300px;
     height: 300px;
   }
 }
@@ -622,9 +623,8 @@ footer {
     height: 76px;
   }
 
-  .logo-img {
-    height: 300px;
-    max-width: 300px;
+  .nav-wrap {
+    height: 90px;
   }
 
   .hero {

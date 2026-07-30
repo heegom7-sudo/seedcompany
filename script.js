@@ -1,90 +1,153 @@
-const menuButton = document.querySelector('.menu-button');
-const nav = document.querySelector('.nav');
-menuButton.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded', String(isOpen));
-});
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+document.addEventListener("DOMContentLoaded", function () {
+  /* =========================
+     모바일 메뉴
+  ========================= */
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('show');
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-/* 개인정보처리방침 팝업 */
+  const menuButton = document.querySelector(".menu-button");
+  const nav = document.querySelector(".nav");
 
-const privacyPolicyModal = document.getElementById("privacyPolicyModal");
-const openPrivacyPolicyButton = document.getElementById(
-  "openPrivacyPolicy"
-);
-const privacyCloseButtons = document.querySelectorAll(
-  "[data-policy-close]"
-);
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", function () {
+      const isOpen = nav.classList.toggle("open");
 
-function openPrivacyPolicy() {
-  if (!privacyPolicyModal) return;
+      menuButton.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+    });
 
-  privacyPolicyModal.classList.add("open");
-  privacyPolicyModal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("policy-modal-open");
-
-  const closeButton = privacyPolicyModal.querySelector(
-    ".policy-modal-close"
-  );
-
-  if (closeButton) {
-    closeButton.focus();
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
   }
-}
 
-function closePrivacyPolicy() {
-  if (!privacyPolicyModal) return;
+  /* =========================
+     스크롤 등장 애니메이션
+  ========================= */
 
-  privacyPolicyModal.classList.remove("open");
-  privacyPolicyModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("policy-modal-open");
+  const revealElements = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.08
+      }
+    );
+
+    revealElements.forEach(function (element) {
+      revealObserver.observe(element);
+    });
+  } else {
+    revealElements.forEach(function (element) {
+      element.classList.add("show");
+    });
+  }
+
+  /* =========================
+     개인정보처리방침 팝업
+  ========================= */
+
+  const privacyPolicyModal =
+    document.getElementById("privacyPolicyModal");
+
+  const openPrivacyPolicyButton =
+    document.getElementById("openPrivacyPolicy");
+
+  const privacyCloseButtons =
+    document.querySelectorAll("[data-policy-close]");
+
+  function openPrivacyPolicy() {
+    if (!privacyPolicyModal) return;
+
+    privacyPolicyModal.classList.add("open");
+    privacyPolicyModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("policy-modal-open");
+  }
+
+  function closePrivacyPolicy() {
+    if (!privacyPolicyModal) return;
+
+    privacyPolicyModal.classList.remove("open");
+    privacyPolicyModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("policy-modal-open");
+  }
 
   if (openPrivacyPolicyButton) {
-    openPrivacyPolicyButton.focus();
+    openPrivacyPolicyButton.addEventListener(
+      "click",
+      function (event) {
+        event.preventDefault();
+        openPrivacyPolicy();
+      }
+    );
   }
-}
 
-if (openPrivacyPolicyButton) {
-  openPrivacyPolicyButton.addEventListener(
-    "click",
-    openPrivacyPolicy
-  );
-}
+  privacyCloseButtons.forEach(function (button) {
+    button.addEventListener("click", closePrivacyPolicy);
+  });
 
-privacyCloseButtons.forEach((button) => {
-  button.addEventListener("click", closePrivacyPolicy);
-});
+  /* =========================
+     이메일무단수집거부 팝업
+  ========================= */
 
-document.addEventListener("keydown", (event) => {
-  if (
-    event.key === "Escape" &&
-    privacyPolicyModal &&
-    privacyPolicyModal.classList.contains("open")
-  ) {
+  const emailPolicyModal =
+    document.getElementById("emailPolicyModal");
+
+  const openEmailPolicyButton =
+    document.getElementById("openEmailPolicy");
+
+  const emailCloseButtons =
+    document.querySelectorAll("[data-email-close]");
+
+  function openEmailPolicy() {
+    if (!emailPolicyModal) return;
+
+    emailPolicyModal.classList.add("open");
+    emailPolicyModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("policy-modal-open");
+  }
+
+  function closeEmailPolicy() {
+    if (!emailPolicyModal) return;
+
+    emailPolicyModal.classList.remove("open");
+    emailPolicyModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("policy-modal-open");
+  }
+
+  if (openEmailPolicyButton) {
+    openEmailPolicyButton.addEventListener(
+      "click",
+      function (event) {
+        event.preventDefault();
+        openEmailPolicy();
+      }
+    );
+  }
+
+  emailCloseButtons.forEach(function (button) {
+    button.addEventListener("click", closeEmailPolicy);
+  });
+
+  /* =========================
+     ESC 키로 팝업 닫기
+  ========================= */
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+
     closePrivacyPolicy();
-/* 이메일무단수집거부 */
-
-const openEmail = document.getElementById("openEmailPolicy");
-const emailModal = document.getElementById("emailPolicyModal");
-
-if(openEmail && emailModal){
-
-    openEmail.addEventListener("click", function(e){
-        e.preventDefault();
-        emailModal.classList.add("open");
-    });
-
-    emailModal.querySelectorAll("[data-email-close]").forEach(function(btn){
-        btn.addEventListener("click", function(){
-            emailModal.classList.remove("open");
-        });
-    });
-  
-}
+    closeEmailPolicy();
+  });
 });

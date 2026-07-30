@@ -59,7 +59,7 @@ a {
 }
 
 .logo-img {
-  height: 150px;
+  height: 200px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -608,7 +608,7 @@ footer {
   }
 
   .logo-img {
-    height: 150px;
+    height: 200px;
   }
 }
 
@@ -623,8 +623,8 @@ footer {
   }
 
   .logo-img {
-    height: 150px;
-    max-width: 210px;
+    height: 200px;
+    max-width: 300px;
   }
 
   .hero {

@@ -59,7 +59,7 @@ a {
 }
 
 .logo-img {
-  height: 58px;
+  height: 150px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -623,7 +623,7 @@ footer {
   }
 
   .logo-img {
-    height: 42px;
+    height: 150px;
     max-width: 210px;
   }
 

@@ -68,5 +68,23 @@ document.addEventListener("keydown", (event) => {
     privacyPolicyModal.classList.contains("open")
   ) {
     closePrivacyPolicy();
-  }
+/* 이메일무단수집거부 */
+
+const openEmail = document.getElementById("openEmailPolicy");
+const emailModal = document.getElementById("emailPolicyModal");
+
+if(openEmail && emailModal){
+
+    openEmail.addEventListener("click", function(e){
+        e.preventDefault();
+        emailModal.classList.add("open");
+    });
+
+    emailModal.querySelectorAll("[data-email-close]").forEach(function(btn){
+        btn.addEventListener("click", function(){
+            emailModal.classList.remove("open");
+        });
+    });
+  
+}
 });

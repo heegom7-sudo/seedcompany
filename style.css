@@ -59,7 +59,7 @@ a {
 }
 
 .logo-img {
-  height: 200px;
+  height: 300px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -608,7 +608,7 @@ footer {
   }
 
   .logo-img {
-    height: 200px;
+    height: 300px;
   }
 }
 
@@ -623,7 +623,7 @@ footer {
   }
 
   .logo-img {
-    height: 200px;
+    height: 300px;
     max-width: 300px;
   }
 

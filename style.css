@@ -803,3 +803,427 @@ body.policy-modal-open {
 .email-dialog .policy-modal-content {
   max-height: none;
 }
+
+
+/* =========================================================
+   반응형 레이아웃 보정
+   PC 디자인은 유지하고 태블릿·모바일 화면만 정리
+========================================================= */
+
+/* 태블릿 */
+@media (max-width: 900px) {
+  .container {
+    width: min(100% - 36px, 1160px);
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .nav-wrap {
+    position: relative;
+    min-height: 76px;
+    gap: 16px;
+  }
+
+  .header-logo {
+    width: 175px;
+    max-width: 58vw;
+    height: auto;
+  }
+
+  .menu-button {
+    display: block;
+    flex-shrink: 0;
+    padding: 6px 8px;
+    line-height: 1;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    z-index: 100;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 0 0 16px 16px;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(16, 44, 76, 0.14);
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    display: block;
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 10px;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .nav-cta {
+    margin-top: 4px;
+    text-align: center !important;
+  }
+
+  .hero {
+    padding: 76px 0 68px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .hero-copy,
+  .hero-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-card {
+    max-width: 100%;
+  }
+
+  .split-layout,
+  .contact-box {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card,
+  .project-card.featured {
+    grid-column: auto;
+    grid-template-columns: 160px minmax(0, 1fr);
+    min-height: 230px;
+  }
+
+  .value-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .nav-wrap {
+    min-height: 68px;
+  }
+
+  .header-logo {
+    width: 150px;
+    max-width: calc(100vw - 90px);
+  }
+
+  .menu-button {
+    font-size: 25px;
+  }
+
+  .nav {
+    left: -14px;
+    right: -14px;
+  }
+
+  .hero {
+    padding: 56px 0 54px;
+  }
+
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .hero-copy {
+    width: 100%;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    font-size: 11px;
+    line-height: 1.7;
+    letter-spacing: 0.13em;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(36px, 11vw, 46px);
+    line-height: 1.16;
+    letter-spacing: -0.045em;
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+  .hero h1 br {
+    display: none;
+  }
+
+  .hero h1 em {
+    display: block;
+    margin-top: 6px;
+  }
+
+  .hero-copy > p {
+    max-width: 100%;
+    margin: 22px 0;
+    font-size: 16px;
+    line-height: 1.75;
+    word-break: keep-all;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin: 26px 0 30px;
+  }
+
+  .button {
+    display: block;
+    width: 100%;
+    padding: 13px 16px;
+    text-align: center;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .hero-stats div {
+    padding: 12px 0 0;
+  }
+
+  .hero-card {
+    width: 100%;
+    max-width: none;
+    padding: 23px 20px;
+    border-radius: 20px;
+  }
+
+  .mini-tag {
+    margin-bottom: 19px;
+  }
+
+  .process-item {
+    align-items: flex-start;
+    gap: 13px;
+  }
+
+  .process-item > span {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+  }
+
+  .process-item b {
+    font-size: 17px;
+  }
+
+  .process-item p {
+    font-size: 13px;
+    line-height: 1.65;
+    word-break: keep-all;
+  }
+
+  .process-line {
+    height: 23px;
+    margin-left: 18px;
+  }
+
+  .hero-shape-1 {
+    width: 190px;
+    height: 190px;
+    top: 70px;
+    right: -95px;
+  }
+
+  .hero-shape-2 {
+    width: 130px;
+    height: 130px;
+    left: -70px;
+  }
+
+  .section {
+    padding: 68px 0;
+  }
+
+  .section h2 {
+    font-size: 34px;
+    line-height: 1.22;
+    word-break: keep-all;
+  }
+
+  .lead {
+    font-size: 20px;
+    word-break: keep-all;
+  }
+
+  .about-copy > p:not(.lead) {
+    font-size: 16px;
+    word-break: keep-all;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 23px 20px;
+  }
+
+  .project-card,
+  .project-card.featured {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .project-visual {
+    min-height: 130px;
+  }
+
+  .project-content {
+    padding: 23px 20px;
+  }
+
+  .project-content h3 {
+    font-size: 21px;
+    word-break: keep-all;
+  }
+
+  .project-content p {
+    word-break: keep-all;
+  }
+
+  .project-content ul {
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+
+  .contact-section {
+    padding-top: 10px;
+  }
+
+  .contact-box {
+    gap: 28px;
+    padding: 30px 22px;
+    border-radius: 21px;
+  }
+
+  .contact-box h2 {
+    font-size: 32px;
+    line-height: 1.25;
+    word-break: keep-all;
+  }
+
+  .contact-info strong {
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer {
+    margin-top: 45px;
+    padding: 34px 0;
+  }
+
+  .footer-logo-img {
+    width: 140px;
+  }
+
+  .footer-links {
+    gap: 15px 20px;
+    margin-bottom: 25px;
+  }
+
+  .footer-links a,
+  .footer-policy-button {
+    font-size: 14px;
+  }
+
+  .footer-address {
+    display: block;
+  }
+
+  .footer-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .footer-address p,
+  .footer-business,
+  .footer-email {
+    font-size: 13px;
+    line-height: 1.75;
+    word-break: keep-all;
+  }
+
+  .footer-business {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .footer-copyright {
+    margin-top: 25px;
+    font-size: 12px;
+  }
+
+  .policy-modal {
+    padding: 10px;
+  }
+
+  .policy-modal-dialog {
+    width: 100%;
+    max-height: calc(100dvh - 20px);
+  }
+
+  .policy-modal-content {
+    max-height: calc(100dvh - 88px);
+  }
+}
+
+/* 작은 모바일 */
+@media (max-width: 380px) {
+  .header-logo {
+    width: 136px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-copy > p {
+    font-size: 15px;
+  }
+
+  .section h2 {
+    font-size: 30px;
+  }
+}

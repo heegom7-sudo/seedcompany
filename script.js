@@ -172,3 +172,60 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+/* 이메일무단수집거부 팝업 전용 */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const openEmailPolicy =
+    document.getElementById("openEmailPolicy");
+
+  const emailPolicyModal =
+    document.getElementById("emailPolicyModal");
+
+  const closeEmailPolicy =
+    document.getElementById("closeEmailPolicy");
+
+  const emailPolicyOverlay =
+    document.getElementById("emailPolicyOverlay");
+
+  function openEmailModal(event) {
+    if (event) {
+      event.preventDefault();
+    }
+
+    if (!emailPolicyModal) return;
+
+    emailPolicyModal.classList.add("open");
+    emailPolicyModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("policy-modal-open");
+  }
+
+  function closeEmailModal() {
+    if (!emailPolicyModal) return;
+
+    emailPolicyModal.classList.remove("open");
+    emailPolicyModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("policy-modal-open");
+  }
+
+  if (openEmailPolicy) {
+    openEmailPolicy.addEventListener("click", openEmailModal);
+  }
+
+  if (closeEmailPolicy) {
+    closeEmailPolicy.addEventListener("click", closeEmailModal);
+  }
+
+  if (emailPolicyOverlay) {
+    emailPolicyOverlay.addEventListener("click", closeEmailModal);
+  }
+
+  document.addEventListener("keydown", function (event) {
+    if (
+      event.key === "Escape" &&
+      emailPolicyModal &&
+      emailPolicyModal.classList.contains("open")
+    ) {
+      closeEmailModal();
+    }
+  });
+});

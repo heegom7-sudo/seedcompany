@@ -52,7 +52,7 @@ a {
 }
 
 .nav-wrap {
-  min-height: 100px;
+  min-height: 78px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,7 +68,7 @@ a {
 }
 
 .header-logo {
-  width: 290px;
+  width: 190px;
   height: auto;
   display: block;
   object-fit: contain;
@@ -555,8 +555,8 @@ a {
 ========================= */
 
 .site-footer {
-  margin-top: 80px;
-  padding: 58px 0 48px;
+  margin-top: 50px;
+  padding: 42px 0 38px;
   background: #111111;
   color: #ffffff;
 }
@@ -572,7 +572,7 @@ a {
 }
 
 .footer-logo-img {
-  width: 170px;
+  width: 160px;
   height: auto;
   display: block;
   object-fit: contain;
@@ -585,310 +585,7 @@ a {
   margin-bottom: 32px;
 }
 
-.footer-links a {
-  color: #ffffff;
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.footer-links a:hover {
-  color: #9ed33b;
-}
-
-.footer-company {
-  width: 100%;
-}
-
-.footer-company > strong {
-  display: block;
-  margin-bottom: 12px;
-  color: #ffffff;
-  font-size: 19px;
-  font-weight: 700;
-}
-
-.footer-address {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.footer-address p {
-  margin: 0 0 4px;
-  color: #eeeeee;
-  font-size: 16px;
-  line-height: 1.8;
-}
-
-.footer-label {
-  flex-shrink: 0;
-  font-weight: 700;
-}
-
-.footer-business {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 38px;
-  margin: 10px 0;
-  color: #eeeeee;
-  font-size: 16px;
-}
-
-.footer-business a {
-  color: #ffffff;
-}
-
-.footer-email {
-  margin: 10px 0;
-  color: #eeeeee;
-  font-size: 16px;
-}
-
-.footer-email a {
-  color: #ffffff;
-}
-
-.footer-email a:hover,
-.footer-business a:hover {
-  text-decoration: underline;
-}
-
-.footer-copyright {
-  margin: 32px 0 0;
-  color: #929292;
-  font-size: 14px;
-}
-
-/* =========================
-   애니메이션
-========================= */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.7s ease;
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: none;
-}
-
-.delay-1 {
-  transition-delay: 0.12s;
-}
-
-.delay-2 {
-  transition-delay: 0.24s;
-}
-
-/* =========================
-   태블릿
-========================= */
-
-@media (max-width: 900px) {
-  .nav-wrap {
-    min-height: 88px;
-  }
-
-  .header-logo {
-   height: auto;
-}
-
-  .nav {
-    display: none;
-    position: absolute;
-    top: 88px;
-    left: 20px;
-    right: 20px;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 18px;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background: #ffffff;
-    box-shadow: 0 18px 42px rgba(16, 44, 76, 0.12);
-  }
-
-  .nav.open {
-    display: flex;
-  }
-
-  .menu-button {
-    display: block;
-  }
-
-  .hero-grid,
-  .split-layout,
-  .contact-box {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-card {
-    max-width: 620px;
-  }
-
-  .service-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .project-list {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card,
-  .project-card.featured {
-    min-height: 230px;
-    grid-column: auto;
-    grid-template-columns: 150px 1fr;
-  }
-
-  .value-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-logo-img {
-    width: 210px;
-  }
-}
-
-/* =========================
-   모바일
-========================= */
-
-@media (max-width: 640px) {
-  .container {
-    width: min(100% - 28px, 1160px);
-  }
-
-  .nav-wrap {
-    min-height: 76px;
-    height: auto;
-  }
-
-  .header-logo {
-    width: 205px;
-  }
-
-  .nav {
-    top: 76px;
-  }
-
-  .hero {
-    padding: 75px 0 60px;
-  }
-
-  .hero h1 {
-    font-size: 44px;
-  }
-
-  .hero-copy > p {
-    font-size: 17px;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-  }
-
-  .button {
-    text-align: center;
-  }
-
-  .hero-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .section {
-    padding: 75px 0;
-  }
-
-  .service-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card,
-  .project-card.featured {
-    grid-template-columns: 1fr;
-  }
-
-  .project-visual {
-    min-height: 150px;
-  }
-
-  .contact-box {
-    padding: 32px 24px;
-  }
-
-  .contact-box h2 {
-    font-size: 34px;
-  }
-
-  .site-footer {
-    margin-top: 50px;
-    padding: 35px 0;
-  }
-
-  .footer-logo-img {
-    width: 190px;
-  }
-
-  .footer-links {
-    gap: 18px;
-    margin-bottom: 26px;
-  }
-
-  .footer-links a {
-    font-size: 15px;
-  }
-
-  .footer-company > strong {
-    font-size: 17px;
-  }
-
-  .footer-address {
-    display: block;
-  }
-
-  .footer-address p,
-  .footer-business,
-  .footer-email {
-    font-size: 14px;
-  }
-
-  .footer-label {
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  .footer-business {
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .footer-copyright {
-    font-size: 12px;
-  }
-}
-/* =========================
-   개인정보처리방침 팝업
-========================= */
-
-.footer-policy-button {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: #ffffff;
-  font: inherit;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.footer-policy-button:hover {
-  color: #9ed33b;
-}
-
+.footer-links a,
 .policy-modal {
   position: fixed;
   inset: 0;
@@ -1096,6 +793,13 @@ body.policy-modal-open {
     display: block;
     width: auto;
   }
-}.email-dialog{
-    max-width:720px;
+}
+
+.email-dialog {
+  width: min(720px, 100%);
+  max-width: 720px;
+}
+
+.email-dialog .policy-modal-content {
+  max-height: none;
 }

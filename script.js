@@ -55,99 +55,120 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* =========================
-     개인정보처리방침 팝업
+     팝업 요소
   ========================= */
 
-  const privacyPolicyModal =
+  const privacyModal =
     document.getElementById("privacyPolicyModal");
 
-  const openPrivacyPolicyButton =
-    document.getElementById("openPrivacyPolicy");
-
-  const privacyCloseButtons =
-    document.querySelectorAll("[data-policy-close]");
-
-  function openPrivacyPolicy() {
-    if (!privacyPolicyModal) return;
-
-    privacyPolicyModal.classList.add("open");
-    privacyPolicyModal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("policy-modal-open");
-  }
-
-  function closePrivacyPolicy() {
-    if (!privacyPolicyModal) return;
-
-    privacyPolicyModal.classList.remove("open");
-    privacyPolicyModal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("policy-modal-open");
-  }
-
-  if (openPrivacyPolicyButton) {
-    openPrivacyPolicyButton.addEventListener(
-      "click",
-      function (event) {
-        event.preventDefault();
-        openPrivacyPolicy();
-      }
-    );
-  }
-
-  privacyCloseButtons.forEach(function (button) {
-    button.addEventListener("click", closePrivacyPolicy);
-  });
-
-  /* =========================
-     이메일무단수집거부 팝업
-  ========================= */
-
-  const emailPolicyModal =
+  const emailModal =
     document.getElementById("emailPolicyModal");
 
-  const openEmailPolicyButton =
+  const privacyOpenButton =
+    document.getElementById("openPrivacyPolicy");
+
+  const emailOpenButton =
     document.getElementById("openEmailPolicy");
 
-  const emailCloseButtons =
-    document.querySelectorAll("[data-email-close]");
+  /* =========================
+     공통 팝업 닫기
+  ========================= */
 
-  function openEmailPolicy() {
-    if (!emailPolicyModal) return;
+  function closeAllModals() {
+    if (privacyModal) {
+      privacyModal.classList.remove("open");
+      privacyModal.setAttribute("aria-hidden", "true");
+    }
 
-    emailPolicyModal.classList.add("open");
-    emailPolicyModal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("policy-modal-open");
-  }
+    if (emailModal) {
+      emailModal.classList.remove("open");
+      emailModal.setAttribute("aria-hidden", "true");
+    }
 
-  function closeEmailPolicy() {
-    if (!emailPolicyModal) return;
-
-    emailPolicyModal.classList.remove("open");
-    emailPolicyModal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("policy-modal-open");
   }
 
-  if (openEmailPolicyButton) {
-    openEmailPolicyButton.addEventListener(
+  /* =========================
+     개인정보처리방침 열기
+  ========================= */
+
+  if (privacyOpenButton && privacyModal) {
+    privacyOpenButton.addEventListener(
       "click",
       function (event) {
         event.preventDefault();
-        openEmailPolicy();
+
+        closeAllModals();
+
+        privacyModal.classList.add("open");
+        privacyModal.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("policy-modal-open");
       }
     );
   }
 
-  emailCloseButtons.forEach(function (button) {
-    button.addEventListener("click", closeEmailPolicy);
-  });
+  /* =========================
+     이메일무단수집거부 열기
+  ========================= */
+
+  if (emailOpenButton && emailModal) {
+    emailOpenButton.addEventListener(
+      "click",
+      function (event) {
+        event.preventDefault();
+
+        closeAllModals();
+
+        emailModal.classList.add("open");
+        emailModal.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("policy-modal-open");
+      }
+    );
+  }
 
   /* =========================
-     ESC 키로 팝업 닫기
+     개인정보처리방침 닫기
+  ========================= */
+
+  document
+    .querySelectorAll("[data-policy-close]")
+    .forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (privacyModal) {
+          privacyModal.classList.remove("open");
+          privacyModal.setAttribute("aria-hidden", "true");
+        }
+
+        document.body.classList.remove("policy-modal-open");
+      });
+    });
+
+  /* =========================
+     이메일무단수집거부 닫기
+  ========================= */
+
+  document
+    .querySelectorAll("[data-email-close]")
+    .forEach(function (button) {
+      button.addEventListener("click", function () {
+        if (emailModal) {
+          emailModal.classList.remove("open");
+          emailModal.setAttribute("aria-hidden", "true");
+        }
+
+        document.body.classList.remove("policy-modal-open");
+      });
+    });
+
+  /* =========================
+     ESC 키로 닫기
   ========================= */
 
   document.addEventListener("keydown", function (event) {
-    if (event.key !== "Escape") return;
-
-    closePrivacyPolicy();
-    closeEmailPolicy();
+    if (event.key === "Escape") {
+      closeAllModals();
+    }
   });
 });
